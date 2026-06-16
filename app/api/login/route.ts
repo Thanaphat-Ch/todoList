@@ -1,6 +1,6 @@
 // src/app/api/login/route.ts
 import { NextResponse } from "next/server";
-import { query } from "@/lib/db";
+import { query } from "@/app/lib/db";
 import bcrypt from "bcryptjs";
 
 export async function POST(req: Request) {
