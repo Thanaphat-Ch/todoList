@@ -6,8 +6,11 @@ import { SessionProvider } from "next-auth/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Everyday - Todo App",
+  title: "Todo App",
   description: "Minimalist Todo Application with Black and Orange Theme",
+  icons: {
+    icon: "/icon.svg", 
+  },
 };
 
 export default function RootLayout({

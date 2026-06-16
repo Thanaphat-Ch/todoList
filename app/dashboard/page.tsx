@@ -15,7 +15,7 @@ export default function DashboardPage() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   // State สำหรับ Form ใน Modal
   const [title, setTitle] = useState("");
@@ -104,7 +104,7 @@ export default function DashboardPage() {
       </div>
 
       {/* บล็อกรายการ Todo (อิงดีไซน์ตามรูปภาพต้นฉบับ) */}
-      <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-3xl p-6 shadow-2xl flex flex-col justify-between min-h-[450px]">
+      <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-3xl p-6 shadow-2xl flex flex-col justify-between min-h-450px">
         <div>
           <div className="flex justify-between items-center mb-6">
             <div>
