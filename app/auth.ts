@@ -20,8 +20,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
 
         try {
+          const cleanEmail = (credentials.email as string).trim().toLowerCase();
           // 1. ค้นหาผู้ใช้ด้วย Raw SQL
-          const res = await query("SELECT * FROM users WHERE email = $1", [credentials.email]);
+          const res = await query("SELECT * FROM users WHERE email = $1", [cleanEmail]);
           
           if (res.rows.length === 0) {
             console.log("❌ ไม่พบอีเมลนี้ในระบบ Supabase");
