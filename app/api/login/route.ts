@@ -11,8 +11,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "กรุณากรอกข้อมูลให้ครบถ้วน" }, { status: 400 });
     }
 
-    // 1. ยิง Raw SQL ไปเช็กที่ Supabase ตรงๆ
-    const res = await query("SELECT * FROM users WHERE email = $1", [email]);
+    const cleanEmail = email.trim().toLowerCase();
+
+    const res = await query("SELECT * FROM users WHERE email = $1", [cleanEmail]);
     const user = res.rows[0];
 
     if (!user) {

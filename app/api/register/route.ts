@@ -10,11 +10,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "กรุณากรอกข้อมูลให้ครบถ้วน" }, { status: 400 });
     }
 
+    const cleanEmail = email.trim().toLowerCase();
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await query(
       "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)",
-      [name, email, hashedPassword]
+      [name, cleanEmail, hashedPassword]
     );
 
     return NextResponse.json({ message: "สมัครสมาชิกสำเร็จ" }, { status: 201 });
